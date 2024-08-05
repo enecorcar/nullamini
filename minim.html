@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Time</title>
+    <style>
+        .ak-play-time {
+            font-size: 1.2em;
+            color: #333;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            width: fit-content;
+            margin: 20px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="ak-play-time" id="playTime">
+        <!-- Play time information will be updated here -->
+        <p>Loading play time...</p>
+    </div>
+
+    <script>
+        // Simulate fetching play time from an API or another source
+        function fetchPlayTime() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve('Play Time: 2 hours 15 minutes');
+                }, 2000); // Simulating a delay
+            });
+        }
+
+        // Update the play time in the div
+        async function updatePlayTime() {
+            const playTimeDiv = document.getElementById('playTime');
+            const playTime = await fetchPlayTime();
+            playTimeDiv.innerHTML = `<p>${playTime}</p>`;
+        }
+
+        // Call the function to update play time when the page loads
+        window.onload = updatePlayTime;
+    </script>
+</body>
+</html>
